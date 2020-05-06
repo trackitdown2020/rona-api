@@ -1,0 +1,19 @@
+{
+  "name": "rona-api",
+  "version": "1.0.0",
+  "description": "COVID-19 Real time API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchen006/rona-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchen006/rona-api/issues"
+  },
+  "homepage": "https://github.com/jchen006/rona-api#readme"
+}
