@@ -3,7 +3,8 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const {
-    healthCheck
+    healthCheck,
+    google
 } = require('./routes');
 const { morganMiddleware } = require("./middleware/logging");
 
@@ -16,7 +17,8 @@ app.use(morganMiddleware);
 app.use(bodyParser.json());
 
 app.use("/healthCheck", healthCheck);
+app.use("/google", google);
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
