@@ -5,12 +5,14 @@ const cors = require('cors');
 const {
     healthCheck
 } = require('./routes');
+const { morganMiddleware } = require("./middleware/logging");
 
 const app = express();
 app.use(cors());
-const port = 8081;
+const port = 8080;
 let _client;
 
+app.use(morganMiddleware);
 app.use(bodyParser.json());
 
 app.use("/healthCheck", healthCheck);
