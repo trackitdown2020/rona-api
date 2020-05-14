@@ -1,9 +1,8 @@
-const request = require('request');
 const tokens = require('../config/tokens');
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(tokens.google.key);
 
-let queryTopHeadlines = async (qs) => {
+const queryTopHeadlines = async (qs) => {
     try {
         const response = await newsapi.v2.topHeadlines(qs);
         return response;
@@ -13,7 +12,7 @@ let queryTopHeadlines = async (qs) => {
     }
 }
 
-let queryAllSources = async (qs) => {
+const queryAllSources = async (qs) => {
     try {
         const response = await newsapi.v2.sources(qs);
         return response;
@@ -23,7 +22,7 @@ let queryAllSources = async (qs) => {
     }
 }
 
-let queryEverythingBySubject = async (qs) => {
+const queryEverythingBySubject = async (qs) => {
     try {
         const response = await newsapi.v2.everything(qs);
         return response;
