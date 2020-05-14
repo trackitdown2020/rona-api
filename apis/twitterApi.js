@@ -35,7 +35,6 @@ const getPopularTweetsByQuery = async (query, lang, result_type) => {
     try {
         const url = `search/tweets.json?q=${query}&lang=${lang}&results_type=${result_type}`;
         const response = await TwitterWrapper(url);
-        console.log(response);
         return response;
     } catch(error) {
         throw new Error(error);

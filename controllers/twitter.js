@@ -9,7 +9,6 @@ const {
 
 const getHelpLanguages = async (req, res) => {
     const response = await getLanguages();
-    console.log(response);
     const mappedLanguages = await response.map(lang => languageMapper(lang));
     res.status(200).send(mappedLanguages); 
 }
