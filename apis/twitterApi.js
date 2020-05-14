@@ -1,6 +1,5 @@
 const tokens = require('../config/tokens');
 const Twitter = require('twitter');
-const util = require('util');
 const twitterClient = new Twitter(tokens.twitter);
 
 const TwitterWrapper = (url) => {

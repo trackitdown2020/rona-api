@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const {
     healthCheck,
-    google
+    google,
+    twitter
 } = require('./routes');
 const { morganMiddleware } = require("./middleware/logging");
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 app.use("/healthCheck", healthCheck);
 app.use("/google", google);
+app.use("/twitter", twitter)
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
