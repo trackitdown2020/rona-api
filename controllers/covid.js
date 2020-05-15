@@ -9,11 +9,10 @@ const getEndpointsHelper = async (req, res) => {
 };
 
 const getTotalByCountryAndStatus = async (req, res) => {
-  const qs = req.query;
-  const response = await getTotalByCountryAndStatus(qs);
-  // const mappedResponse = await response.map(item => covidMapper(item));
-  res.status(200).send(response);
-  // res.status(200).send(mappedResponse);
+  const qs = await req.query;
+  const response = await queryTotalByCountryAndStatus(qs);
+  const { data } = response
+  res.status(200).send(data);
 };
 
 module.exports = {
