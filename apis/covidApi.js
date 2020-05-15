@@ -16,15 +16,14 @@ const getEndpoints = async () => {
  * @param country, status
  * @returns all cases by type for a country
  */
-const queryTotalByCountryAndStatus = async (qs) => {
-  const { country, status } = qs;
-  if (!country || !status) return;
+const queryTotalByCountryAndStatus = async (country, status) => {
+  if (!country) return;
 
   try {
     const url = `https://api.covid19api.com/total/country/${country}/status/${status}`;
-    console.log(url);
     const response = await axios.get(url);
-    return response;
+    const { data } = response;
+    return data;
   } catch (error) {
     throw new Error(error);
     return;

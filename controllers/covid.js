@@ -9,10 +9,9 @@ const getEndpointsHelper = async (req, res) => {
 };
 
 const getTotalByCountryAndStatus = async (req, res) => {
-  const qs = await req.query;
-  const response = await queryTotalByCountryAndStatus(qs);
-  const { data } = response
-  res.status(200).send(data);
+  const { country, status="confirmed" } = await req.query;
+  const response = await queryTotalByCountryAndStatus(country, status);
+  res.status(200).send(response);
 };
 
 module.exports = {
