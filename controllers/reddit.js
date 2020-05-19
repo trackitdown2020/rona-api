@@ -7,21 +7,21 @@ const {
 const getSubredditsTopPosts = async (req, res) => {
     const { subreddits, time, limit } = req.query;
     const subsList = subreddits.split(",");
-    const response = await querySubredditTop(subsList, time, limit);
+    const response = await querySubredditTop(subsList, time, Number(limit));
     res.status(200).send(response);
 }
 
 const getSubredditsHotPosts = async (req, res) => {
     const { subreddits, time, limit } = req.query;
     const subsList = subreddits.split(",");
-    const response = await querySubredditHot(subsList, time, limit);
+    const response = await querySubredditHot(subsList, time, Number(limit));
     res.status(200).send(response);
 }
 
 const getSubredditsNewPosts = async (req, res) => {
     const { subreddits, time, limit } = req.query;
     const subsList = subreddits.split(",");
-    const response = await querySubredditsNew(subsList, time, limit);
+    const response = await querySubredditsNew(subsList, time, Number(limit));
     res.status(200).send(response);
 }
 
