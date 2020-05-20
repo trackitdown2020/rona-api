@@ -5,7 +5,8 @@ const cors = require('cors');
 const {
     healthCheck,
     google,
-    twitter
+    twitter,
+    reddit
 } = require('./routes');
 const { morganMiddleware } = require("./middleware/logging");
 
@@ -18,7 +19,8 @@ app.use(bodyParser.json());
 
 app.use("/healthCheck", healthCheck);
 app.use("/google", google);
-app.use("/twitter", twitter)
+app.use("/twitter", twitter);
+app.use("/reddit", reddit);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
