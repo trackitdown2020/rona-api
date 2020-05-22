@@ -3,4 +3,5 @@ module.exports = {
     google: require('./google'),
     twitter: require('./twitter'),
     reddit: require('./reddit'),
+    covid19: require('./covid19')
 }
