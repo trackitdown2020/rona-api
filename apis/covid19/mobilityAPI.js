@@ -13,7 +13,6 @@ const typeMap = {
 
 const queryMobility = async (country, state='', type) => {
     try { 
-        console.log(state, country)
         if(state && country === 'US') {
             const response = await axios.get(`https://pastelsky.github.io/covid-19-mobility-tracker/output/US/${state}/mobility.json`);
             const { data } = response;
