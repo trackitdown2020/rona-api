@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-
 const types = ['parks', 'residential', 'retail-and-recreation', 'transit-stations', 'workplaces', 'grocery-and-pharmacy'];
 const typeMap = {
     'retail-and-recreation': 'retailAndRecreation',
@@ -12,19 +11,21 @@ const typeMap = {
 };
 
 
-const queryMobility = async (country, state='', type='all') => {
+const queryMobility = async (country, state='', type) => {
     try { 
         console.log(state, country)
         if(state && country === 'US') {
             const response = await axios.get(`https://pastelsky.github.io/covid-19-mobility-tracker/output/US/${state}/mobility.json`);
             const { data } = response;
             const { state:responseData } = data;
-            console.log(responseData);
             if(types.includes(type)) {
                 const mappedType = typeMap[type];
-                return responseData[mappedType];
+                return { 
+                    location : type,
+                    ...responseData[mappedType] 
+                };
             } else {
-                return responseData;
+                return { error: 'Location type not included in dataset.' };
             }
         } else {
             const response = await axios.get(`https://pastelsky.github.io/covid-19-mobility-tracker/output/${country}/mobility.json`);
@@ -32,9 +33,12 @@ const queryMobility = async (country, state='', type='all') => {
             const { country:responseData } = data;
             if(types.includes(type)) {
                 const mappedType = typeMap[type];
-                return responseData[mappedType];
+                return { 
+                    location : type,
+                    ...responseData[mappedType] 
+                };
             } else {
-                return responseData;
+                return { error: 'Location type not included in dataset.' };
             }
         }
     } catch(error) {
@@ -43,5 +47,8 @@ const queryMobility = async (country, state='', type='all') => {
     }
 }
 
-module.exports = { queryMobility };
+module.exports = { 
+    queryMobility,
+    typeMap 
+};
 
