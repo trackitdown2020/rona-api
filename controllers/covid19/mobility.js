@@ -1,4 +1,4 @@
-const { queryMobility, typeMap } = require('../../apis/covid19/mobilityAPI');
+const { queryMobility, typeMap, types } = require('../../apis/covid19/mobilityAPI');
 
 const processMobilityDataHelper = (locationData) => {
     const timeValueMap = {};
@@ -19,7 +19,14 @@ const processMobilityDataHelper = (locationData) => {
 const getMobility = async (req, res) => {
     let qs = req.query;
     const { country, state, type } = qs;
-    const locationTypes = type.split(",");
+
+    let locationTypes;
+    if(type === 'all') {
+        locationTypes = types;
+    } else {
+        locationTypes = type.split(",");
+    }
+    
     const response = await Promise.all(locationTypes.map(location => queryMobility(country, state, location)));
     const graphLabels = ['Date'];
     for(let locationData of response) {

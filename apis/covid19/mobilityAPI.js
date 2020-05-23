@@ -49,6 +49,7 @@ const queryMobility = async (country, state='', type) => {
 
 module.exports = { 
     queryMobility,
-    typeMap 
+    typeMap,
+    types
 };
 
