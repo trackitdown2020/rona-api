@@ -9,6 +9,14 @@ const typeMap = {
     'workplaces': 'workplaces',
     'residential': 'residential'
 };
+const nameMap = {
+    'retail-and-recreation': 'Retail and Recreation',
+    'grocery-and-pharmacy': 'Grocery and Pharmacy',
+    'parks' : 'Parks',
+    'transit-stations': 'Transit Stations',
+    'workplaces': 'Workplaces',
+    'residential': 'Residential'
+}
 
 
 const queryMobility = async (country, state='', type) => {
@@ -49,6 +57,7 @@ const queryMobility = async (country, state='', type) => {
 module.exports = { 
     queryMobility,
     typeMap,
+    nameMap,
     types
 };
 
