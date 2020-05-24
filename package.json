@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "http": "0.0.1-security",
     "lodash": "^4.17.15",
+    "moment": "^2.26.0",
     "morgan": "^1.10.0",
     "newsapi": "^2.4.0",
     "nodemon": "^2.0.3",

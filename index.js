@@ -6,7 +6,8 @@ const {
     healthCheck,
     google,
     twitter,
-    reddit
+    reddit,
+    covid19
 } = require('./routes');
 const { morganMiddleware } = require("./middleware/logging");
 
@@ -21,6 +22,7 @@ app.use("/healthCheck", healthCheck);
 app.use("/google", google);
 app.use("/twitter", twitter);
 app.use("/reddit", reddit);
+app.use("/covid19", covid19);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
