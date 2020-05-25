@@ -18,6 +18,7 @@ const foo = (req, res) => {
 
     shell.on('message', (message) => {
         // whatever you "print" is basically going to be passed back in this message.
+        console.log(message)
         res.status(200).send(message)
     });
 

@@ -1,4 +1,4 @@
-# from scipy.integrate import odeint
+from scipy.integrate import odeint
 import numpy as np
 import os
 import sys
@@ -52,19 +52,16 @@ def read_in():
 def main():
     variables = read_in()
     susceptible = variables['susceptible']
-    exposed: variables['exposed']
-    infected: variables['infected']
-    resistant: variables['resistant']
+    exposed = variables['exposed']
+    infected = variables['infected']
+    resistant = variables['resistant']
     return susceptible, exposed, infected, resistant
 
 # Start process
 if __name__ == '__main__':
     susceptible, exposed, infected, resistant = main()
-
-    #TODO: remap to the correct variables from above  
-
-    N = sys.stdin.argv[0]
-    E = sys.stdin.argv[1]
+    N = susceptible
+    E = exposed
     D = 4.0  # infections lasts four days
     gamma = 1.0 / D
     delta = 1.0 / 5.0  # incubation period of five days
@@ -83,6 +80,7 @@ if __name__ == '__main__':
         'resistant': R
     }
 
-    results_json = json.dumps(results)
-    print(results_json)
+    print(results) 
+    # results_json = json.dumps(results)
+    # print(results_json)
     sys.stdout.flush()
