@@ -14,10 +14,11 @@ const foo = (req, res) => {
         'resistant': 0
     }
 
-    shell.send(JSON.stringify(data), { mode: 'json' });
+    shell.send(JSON.stringify(data));
 
     shell.on('message', (message) => {
-        console.log({ message });
+        // whatever you "print" is basically going to be passed back in this message.
+        res.status(200).send(message)
     });
 
     shell.end(err => {
