@@ -1,4 +1,4 @@
-const { queryByCountry, queryCountries } = require("../../apis/covid19/coronavirusAPI");
+const { queryByCountry, queryCountries, querySummary } = require("../../apis/covid19/coronavirusAPI");
 
 const getCountries = async (req, res) => {
     const response = await queryCountries();
@@ -12,7 +12,13 @@ const getCountry = async (req, res) => {
     res.status(200).send(response);
 }
 
+const getSummary = async (req, res) => {
+    const response = await querySummary();
+    res.status(200).send(response);
+}
+
 module.exports = {
     getCountries,
-    getCountry
+    getCountry,
+    getSummary
 }

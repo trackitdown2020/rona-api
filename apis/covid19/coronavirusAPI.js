@@ -16,7 +16,21 @@ const queryByCountry = async (country, from, to) => {
 
 const queryCountries = async () => {
     try {
-        const response = await fetch("https://api.covid19api.com/countries")
+        const response = await fetch("https://api.covid19api.com/countries");
+        const json = await response.json();
+        if(json && json.error) {
+            throw Error(response.error);
+        } else {
+            return json;
+        }
+    } catch(error) {
+        throw new Error(error);
+    }
+}
+
+const querySummary = async () => {
+    try {
+        const response = await fetch("https://api.covid19api.com/summary");
         const json = await response.json();
         if(json && json.error) {
             throw Error(response.error);
@@ -30,5 +44,6 @@ const queryCountries = async () => {
 
 module.exports = {
     queryByCountry,
-    queryCountries
+    queryCountries,
+    querySummary
 }
