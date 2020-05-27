@@ -73,7 +73,6 @@ if __name__ == '__main__':
     susceptible, exposed, infected, resistant = main()
     N = susceptible
     E = exposed
-    print(N)
     D = 4.0  # infections lasts four days
     gamma = 1.0 / D
     delta = 1.0 / 5.0  # incubation period of five days

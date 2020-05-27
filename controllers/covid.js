@@ -3,7 +3,6 @@ const {
   queryTotalByCountryAndStatus,
 } = require("../apis/covidApi");
 const Country = require('db-country');
-const { SEIRModel } = require("../data_models/modelHelper")
 
 const getEndpointsHelper = async (req, res) => {
   const response = await getEndpoints();
