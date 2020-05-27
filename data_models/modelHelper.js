@@ -29,8 +29,8 @@ const foo = (req, res) => {
 
 app.get('/SIR', foo);
 
-app.listen(8081, () => {
-    console.log(`Listening on port 8081`);
+app.listen(8083, () => {
+    console.log(`Listening on port 8083`);
 });
 
 
@@ -49,12 +49,12 @@ const SEIRModel = (susceptible, exposed, infected, resistant) => {
         return message;
     })
 
-    pyshell.end(function (err, code, signal) {
-        if (err) throw err;
-        console.log('The exit code was: ' + code);
-        console.log('The exit signal was: ' + signal);
-        console.log('finished');
-    });
+    // pyshell.end(function (err, code, signal) {
+    //     if (err) throw err;
+    //     console.log('The exit code was: ' + code);
+    //     console.log('The exit signal was: ' + signal);
+    //     console.log('finished');
+    // });
 
     return data
     // const options = {
