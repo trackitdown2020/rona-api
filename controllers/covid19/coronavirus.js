@@ -1,13 +1,14 @@
 const { queryByCountry, queryCountries } = require("../../apis/covid19/coronavirusAPI");
 
 const getCountries = async (req, res) => {
-    let qs = req.query;
     const response = await queryCountries();
     res.status(200).send(response);
 }
 
-const getCountry= async (req, res) => {
-    const response = await queryByCountry(req.params.country, req.query.from, req.query.to);
+const getCountry = async (req, res) => {
+    const { country } = req.params;
+    const { from, to } = req.query;
+    const response = await queryByCountry(country, from, to);
     res.status(200).send(response);
 }
 
