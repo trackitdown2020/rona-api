@@ -1,7 +1,6 @@
 const { upperCaseFirstLetter } = require('./string');
 
 const lineGraphFormatter = (data) => {
-    console.log(typeof data)
     const indexMap = {};
     const labels = ['Time'];
     for(let [key, values] of Object.entries(data)) {
