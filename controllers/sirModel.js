@@ -63,9 +63,9 @@ const getSeirPredictionsByCountry = async (req, res) => {
     shell.send(JSON.stringify(data));
 
     shell.on('message', (message) => {
-        format = lineGraphFormatter(message);
-        console.log(format);
-        res.status(200).send(format);
+        const response = JSON.parse(message);
+        const formattedData = lineGraphFormatter(response);
+        res.status(200).send(formattedData);
     });
 
     shell.end(err => {
