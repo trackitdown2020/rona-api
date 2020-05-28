@@ -40,11 +40,16 @@ const getSeirPredictionsByCountry = async (req, res) => {
     let population_data = await Country.get(country);
     let confirmed_data = await queryTotalByCountryAndStatus(country, "confirmed");
 
-    console.log({population_data, confirmed_data})
+    if(population_data) {
+        res.status(500).send('No country population found.');
+    }
+
+    if(confirmed_data) {
+        res.status(500).send('No country COVID data queried.');
+    }
+    
     const { population } = population_data;
     const { infected } = confirmed_data;
-
-    console.log({population, infected})
 
     let data = {
         susceptible: parseInt(population),
