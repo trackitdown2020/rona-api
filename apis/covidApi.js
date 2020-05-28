@@ -23,7 +23,12 @@ const queryTotalByCountryAndStatus = async (country, status) => {
     const url = `https://api.covid19api.com/total/country/${country}/status/${status}`;
     const response = await axios.get(url);
     const { data } = response;
-    return data;
+
+    let infected = 0;
+    data.forEach((day) => {
+      infected += day.Cases;
+    })
+    return { infected };
   } catch (error) {
     throw new Error(error);
     return;
