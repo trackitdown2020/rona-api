@@ -16,7 +16,8 @@ const queryTotalByCountryAndStatus = async (country, status) => {
     let infected = 0;
     data.forEach((day) => {
       infected += day.Cases;
-    })
+    });
+
     return { infected };
   } catch (error) {
     throw new Error(error);
