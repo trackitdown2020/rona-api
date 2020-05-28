@@ -40,11 +40,11 @@ const getSeirPredictionsByCountry = async (req, res) => {
     let population_data = await Country.get(country);
     let confirmed_data = await queryTotalByCountryAndStatus(country, "confirmed");
 
-    if(population_data) {
+    if(!population_data) {
         res.status(500).send('No country population found.');
     }
 
-    if(confirmed_data) {
+    if(!confirmed_data) {
         res.status(500).send('No country COVID data queried.');
     }
 
@@ -61,7 +61,7 @@ const getSeirPredictionsByCountry = async (req, res) => {
     shell.send(JSON.stringify(data));
 
     shell.on('message', (message) => {
-        console.log(message)
+        console.log(message);
         res.status(200).send(message)
     });
 

@@ -13,12 +13,13 @@ const queryTotalByCountryAndStatus = async (country, status) => {
     const response = await axios.get(url);
     const { data } = response;
 
-    let infected = 0;
-    data.forEach((day) => {
-      infected += day.Cases;
-    });
-
-    return { infected };
+    if(data.length > 0) {
+      let infected = data[0].Cases;
+      return { infected };
+    } else {
+      throw new Error({ error: 'Country could not be queried.'});
+      return;
+    }
   } catch (error) {
     throw new Error(error);
     return;
