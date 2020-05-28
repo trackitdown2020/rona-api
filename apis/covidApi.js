@@ -1,16 +1,5 @@
 const axios = require("axios");
 
-const getEndpoints = async () => {
-  try {
-    const response = await axios.get("https://api.covid19api.com/");
-    console.log(response);
-    return response;
-  } catch (error) {
-    throw new Error(error);
-    return;
-  }
-};
-
 /**
  *
  * @param country, status
@@ -36,6 +25,5 @@ const queryTotalByCountryAndStatus = async (country, status) => {
 };
 
 module.exports = {
-  getEndpoints,
   queryTotalByCountryAndStatus,
 };
