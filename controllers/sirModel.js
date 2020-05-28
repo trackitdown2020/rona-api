@@ -47,7 +47,7 @@ const getSeirPredictionsByCountry = async (req, res) => {
     if(confirmed_data) {
         res.status(500).send('No country COVID data queried.');
     }
-    
+
     const { population } = population_data;
     const { infected } = confirmed_data;
 
@@ -66,8 +66,11 @@ const getSeirPredictionsByCountry = async (req, res) => {
     });
 
     shell.end(err => {
-        if (err) console.log({ err })
-    })
+        if (err) {
+            console.log({ err });
+            res.status(500).send(err);
+        }
+    });
 }
 
 module.exports = { 
