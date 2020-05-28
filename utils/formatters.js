@@ -16,7 +16,7 @@ const lineGraphFormatter = ({ data }) => {
             ]
         )
     )
-    return [row, col]
+    return [rows, col]
 }
 module.exports = {
     lineGraphFormatter
