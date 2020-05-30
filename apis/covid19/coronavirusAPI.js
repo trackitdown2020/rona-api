@@ -1,14 +1,11 @@
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
+const axios = require('axios');
 
 const queryByCountry = async (country, from, to) => {
     try {
-        const response = await fetch('https://api.covid19api.com/country/' + country + `?from=${from}&to=${to}`);
-        const json = await response.json();
-        if(json && json.error) {
-            throw Error(json.error);
-        } else {
-            return json;
-        }
+        const response = await axios.get('https://api.covid19api.com/country/' + country + `?from=${from}&to=${to}`);
+        const { data } = response;
+        return data;
     } catch (error) {
         throw new Error(error);
     }
@@ -16,13 +13,9 @@ const queryByCountry = async (country, from, to) => {
 
 const queryCountries = async () => {
     try {
-        const response = await fetch("https://api.covid19api.com/countries");
-        const json = await response.json();
-        if(json && json.error) {
-            throw Error(response.error);
-        } else {
-            return json;
-        }
+        const response = await axios.get("https://api.covid19api.com/countries");
+        const { data } = response;
+        return data;
     } catch(error) {
         throw new Error(error);
     }
@@ -30,13 +23,9 @@ const queryCountries = async () => {
 
 const querySummary = async () => {
     try {
-        const response = await fetch("https://api.covid19api.com/summary");
-        const json = await response.json();
-        if(json && json.error) {
-            throw Error(response.error);
-        } else {
-            return json;
-        }
+        const response = await axios.get("https://api.covid19api.com/summary");
+        const { data } = response;
+        return data;
     } catch(error) {
         throw new Error(error);
     }
