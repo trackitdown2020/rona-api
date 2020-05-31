@@ -13,46 +13,19 @@ class NumpyArrayEncoder(JSONEncoder):
         return JSONEncoder.default(self, obj)
 
 
-def deriv(y, t, N, beta, gamma, delta):
-    S, E, I, R = y
-    dS = -beta * S * I / N
-    dE = beta * S * I / N - delta * E
-    dI = delta * E - gamma * I
-    dR = gamma * I
-    return dS, dE, dI, dR
+def deriv(y, time, N, beta, gamma, delta):
+    susceptible, exposed, infected, resistant = y
+    dSusceptible = -beta * susceptible * infected / N
+    dExposed = beta * susceptible * infected / N - delta * exposed
+    dInfected = delta * exposed - gamma * infected
+    dResistant = gamma * infected
+    return dSusceptible, dExposed, dInfected, dResistant
 
 
-def integ(y0, t, N, beta, gamma, delta):
-    ret = odeint(deriv, y0, t, args=(N, beta, gamma, delta))
-    S, E, I, R = ret.T
-    return S, E, I, R
-
-
-N = 10000
-
-E = 1
-D = 4.0  # infections lasts four days
-gamma = 1.0 / D
-delta = 1.0 / 5.0  # incubation period of five days
-R_0 = 5.0
-beta = R_0 * gamma  # R_0 = beta / gamma, so beta = R_0 * gamma
-S0, E0, I0, R0 = N-E, E, 0, 0  # initial conditions: one exposed
-
-t = np.linspace(0, 99, 100)  # Grid of time points (in days)
-y0 = S0, E0, I0, R0  # Initial conditions vector
-# Integrate the SIR equations over the time grid, t.
-# ret = odeint(deriv, y0, t, args=(N, beta, gamma, delta))
-# S, E, I, R = ret.T
-
-
-S, E, I, R = integ(y0, t, N, beta, gamma, delta)
-results = {
-    'susceptible': S,
-    'exposed': E,
-    'infected': I,
-    'resistant': R
-}
-
+def integ(y_initial, time, N, beta, gamma, delta):
+    ret = odeint(deriv, y_initial, time, args=(N, beta, gamma, delta))
+    susceptible, exposed, infected, resistant = ret.T
+    return susceptible, exposed, infected, resistant
 
 def read_in():
     value = input()
@@ -71,6 +44,7 @@ def main():
 # Start process
 if __name__ == '__main__':
     susceptible, exposed, infected, resistant = main()
+
     N = susceptible
     E = exposed
     D = 4.0  # infections lasts four days
@@ -80,10 +54,10 @@ if __name__ == '__main__':
     beta = R_0 * gamma  # R_0 = beta / gamma, so beta = R_0 * gamma
     S0, E0, I0, R0 = N-E, E, 0, 0  # initial conditions: one exposed
 
-    t = np.linspace(0, 99, 100)  # Grid of time points (in days)
-    y0 = S0, E0, I0, R0  # Initial conditions vector
+    time = np.linspace(0, 99, 100)  # Grid of time points (in days)
+    y_iniital = S0, E0, I0, R0  # Initial conditions vector
 
-    S, E, I, R = integ(y0, t, N, beta, gamma, delta)
+    S, E, I, R = integ(y_iniital, time, N, beta, gamma, delta)
     S.tolist()
     E.tolist()
     I.tolist()
