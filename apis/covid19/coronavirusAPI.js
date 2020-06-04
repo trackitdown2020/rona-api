@@ -31,8 +31,19 @@ const querySummary = async () => {
     }
 }
 
+const querySummaryAndCountryInfo = async () => {
+    try {
+        const response = await axios.get("https://corona-api.com/countries");
+        const { data } = response;
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 module.exports = {
     queryByCountry,
     queryCountries,
-    querySummary
+    querySummary,
+    querySummaryAndCountryInfo
 }
