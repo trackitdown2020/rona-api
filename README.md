@@ -4,6 +4,6 @@ COVID-19 Real time API
 ## Python Setup
 To setup the Python virtual environment 'rona'
 ```
-npm python:install
+npm run python:install
 ```
 
