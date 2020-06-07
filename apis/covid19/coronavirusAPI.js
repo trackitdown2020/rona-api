@@ -31,6 +31,8 @@ const querySummary = async () => {
     }
 }
 
+//Need to split this up to make it easier to manage later on 
+
 const querySummaryAndCountryInfo = async () => {
     try {
         const response = await axios.get("https://corona-api.com/countries");
