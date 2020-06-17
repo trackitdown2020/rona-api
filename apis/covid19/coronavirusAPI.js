@@ -1,6 +1,6 @@
-// const fetch = require('node-fetch');
 const axios = require('axios');
 
+// refactor out to time series 
 const queryByCountry = async (country, from, to) => {
     try {
         const response = await axios.get('https://api.covid19api.com/country/' + country + `?from=${from}&to=${to}`);
@@ -30,8 +30,6 @@ const querySummary = async () => {
         throw new Error(error);
     }
 }
-
-//Need to split this up to make it easier to manage later on 
 
 const querySummaryAndCountryInfo = async () => {
     try {
