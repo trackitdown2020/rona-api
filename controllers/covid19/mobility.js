@@ -6,11 +6,11 @@ const processMobilityDataHelper = (locationData) => {
         const data = points.map(({date, value}) => {
             return {
                 x: date,
-                y: value*0.01
+                y: value
             }
         })
         return {
-            id,
+            id: nameMap[id],
             data
         }
     });
