@@ -1,14 +1,19 @@
 const { upperCaseFirstLetter } = require('./string');
 
 const lineGraphFormatter = (data) => {
+    console.log(data)
     let formattedData = [];
     for (let [key, values] of Object.entries(data)) {
-        labels.push(upperCaseFirstLetter(key));
-        values.map((value, index) => { return ({value, index}) });
+        const formattedValues = values.map((value, index) => { 
+            return {
+                x: index, 
+                y: parseFloat(value.toFixed(2))
+            }
+        });
         
         formattedData.push({
-            id: key,
-            data: values
+            id: upperCaseFirstLetter(key),
+            data: formattedValues
         });
     }
 
