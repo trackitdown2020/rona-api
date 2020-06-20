@@ -41,7 +41,7 @@ const queryMobility = async (country, state='', type) => {
             if(types.includes(type)) {
                 const mappedType = typeMap[type];
                 return { 
-                    location : type,
+                    id : type,
                     ...responseData[mappedType] 
                 };
             } else {
