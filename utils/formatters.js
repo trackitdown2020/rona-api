@@ -1,21 +1,18 @@
 const { upperCaseFirstLetter } = require('./string');
 
 const lineGraphFormatter = (data) => {
-    const indexMap = {};
-    const labels = ['Time'];
+    const data = [];
     for (let [key, values] of Object.entries(data)) {
         labels.push(upperCaseFirstLetter(key));
-        values.map((value, index) => {
-            if (indexMap.hasOwnProperty(index)) {
-                indexMap[index].push(Math.floor(value));
-            } else {
-                indexMap[index] = [index, Math.floor(value)];
-            }
-        })
-
+        values.map((value, index) => { return ({value, index}) });
+        
+        data.push({
+            id: key,
+            data: values
+        });
     }
 
-    return [labels, ...Object.values(indexMap)]
+    return data;
 }
 
 module.exports = {
