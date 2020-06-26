@@ -19,6 +19,18 @@ const lineGraphFormatter = (data) => {
     return formattedData;
 }
 
+const timeSeriesFormatter = (data) => {
+    const formattedData = [];
+    for(let [date, value] in data) {
+        formattedData.push({
+            x: date,
+            y: value
+        });
+    }
+    return formattedData;
+}
+
 module.exports = {
-    lineGraphFormatter
+    lineGraphFormatter,
+    timeSeriesFormatter
 }
