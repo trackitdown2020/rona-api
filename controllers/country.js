@@ -4,7 +4,6 @@ const { countryInfoMapper } = require('../mappers/countryInfoMapper');
 const getAllCountries = async (req, res) => {
     const countries  = await queryAllCountries();
     if(countries) {
-        console.log(countries)
         const mappedCountries = countries.map(countryInfoMapper);
         res.status(200).send(mappedCountries);
     } else {
