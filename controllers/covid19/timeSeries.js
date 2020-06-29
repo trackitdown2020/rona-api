@@ -14,11 +14,20 @@ const getTimeSeriesCountry = async (req, res) => {
     if(response) {
         const { timeline } = response;
         const { cases, deaths, recovered } = timeline;
-        res.status(200).send({
-            cases: timeSeriesFormatter(cases),
-            deaths: timeSeriesFormatter(deaths),
-            recovered: timeSeriesFormatter(recovered)
-        });
+        res.status(200).send([
+            {
+                id: "Cases",
+                data: timeSeriesFormatter(cases)
+            },
+            {
+                id: "Deaths",
+                data: timeSeriesFormatter(deaths),
+            },
+            {
+                id: "Recovered",
+                data: timeSeriesFormatter(recovered)
+            }
+        ]);
     } else {
         res.status(500).send({
             error: `Issue getting time series for ${country} in the last ${time} days`

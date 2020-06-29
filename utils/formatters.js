@@ -1,4 +1,5 @@
 const { upperCaseFirstLetter } = require('./string');
+const Moment = require('moment');
 
 const lineGraphFormatter = (data) => {
     let formattedData = [];
@@ -22,8 +23,9 @@ const lineGraphFormatter = (data) => {
 const timeSeriesFormatter = (data) => {
     const formattedData = [];
     for(let [date, value] of Object.entries(data)) {
+        const dateDisplay = Moment(date, "MM-DD-YYYY").format('YYYY-MM-DD');
         formattedData.push({
-            x: date,
+            x: dateDisplay,
             y: value
         });
     }
