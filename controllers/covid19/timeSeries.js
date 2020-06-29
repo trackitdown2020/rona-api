@@ -4,6 +4,7 @@ const { timeSeriesFormatter } = require('../../utils/formatters');
 const getTimeSeriesCountry = async (req, res) => {
     let qs = req.query;
     const { country, time } = qs;
+    console.log(qs)
 
     if(time && isNaN(time)) {
         res.status(500).send({error: 'Time is not a valid value.'});

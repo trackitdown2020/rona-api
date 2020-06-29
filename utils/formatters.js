@@ -21,7 +21,7 @@ const lineGraphFormatter = (data) => {
 
 const timeSeriesFormatter = (data) => {
     const formattedData = [];
-    for(let [date, value] in data) {
+    for(let [date, value] of Object.entries(data)) {
         formattedData.push({
             x: date,
             y: value

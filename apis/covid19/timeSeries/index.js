@@ -11,8 +11,9 @@ const axios = require('axios');
  */
 const queryTimeSeriesCountry = async (country, lastDays='all') => {
     try {
-        const response = await axios.get(`https://disease.sh/v2/historical/${country}?lastdays=${lastDays}`);
-        const { data } = response;
+        const url = `https://disease.sh/v2/historical/${country}?lastdays=${lastDays}`;
+        console.log(url)
+        const { data } = await axios.get(url);
         return data;
     } catch (error) {
         throw new Error(error);
