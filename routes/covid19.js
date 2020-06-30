@@ -18,16 +18,25 @@ const {
   getCountryProvinceData,
   getCountrySummary
 } = require('../controllers/covid19/province');
+const { 
+  getTimeSeriesCountry
+} = require('../controllers/covid19/timeSeries');
 
 router.get("/totalByCountryStatus", getTotalByCountryAndStatus);
 router.get('/countries', getCountries);
 router.get('/country/:country', getCountry);
-router.get('/mobility', getMobility);
+
 router.get('/summary', getSummary);
 router.get('/globalSummary', getSummaryGlobal);
 router.get('/countriesSummary', getSummaryCountries);
 router.get('/summaryOfAllCountries', getSummaryOfAllCountries);
 router.get('/countryProvinceReport', getCountryProvinceData);
 router.get('/countryReport', getCountrySummary);
+
+//Mobility
+router.get('/mobility', getMobility);
+
+// Time Series 
+router.get('/timeSeries/country', getTimeSeriesCountry);
 
 module.exports = router
