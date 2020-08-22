@@ -35,18 +35,21 @@ const getSeirPredictions = (req, res) => {
     });
 
     shell.end(err => {
-        if (err) console.log({ err })
-    })
+        if (err) {
+            console.log({ err });
+            res.status(500).send(err);
+        }
+    });
 }
 
 const getSeirPredictionsByCountry = async (req, res) => {
-    const {
-        country,
-    } = await req.query;
     let population_data;
     let confirmed_data;
     
     try {
+        const {
+            country,
+        } = await req.query;
         population_data = await Country.get(country);
         confirmed_data = await queryTotalByCountryAndStatus(country, "confirmed");
     } catch(err) {
