@@ -30,6 +30,10 @@ const getSeirPredictions = (req, res) => {
         res.status(200).send(format)
     });
 
+    shell.on('error', () => {
+        res.status(500).send({error});
+    });
+
     shell.end(err => {
         if (err) console.log({ err })
     })
@@ -39,15 +43,15 @@ const getSeirPredictionsByCountry = async (req, res) => {
     const {
         country,
     } = await req.query;
-    let population_data = await Country.get(country);
-    let confirmed_data = await queryTotalByCountryAndStatus(country, "confirmed");
-
-    if (!population_data) {
-        res.status(500).send('No country population found.');
-    }
-
-    if (!confirmed_data) {
-        res.status(500).send('No country COVID data queried.');
+    let population_data;
+    let confirmed_data;
+    
+    try {
+        population_data = await Country.get(country);
+        confirmed_data = await queryTotalByCountryAndStatus(country, "confirmed");
+    } catch(err) {
+        res.status(500).send({error: 'Relevant country or covid data could not be found.'});
+        return;
     }
 
     const { population } = population_data;
@@ -66,6 +70,11 @@ const getSeirPredictionsByCountry = async (req, res) => {
         const response = JSON.parse(message);
         const formattedData = lineGraphFormatter(response);
         res.status(200).send(formattedData);
+    });
+
+    shell.on('error', () => {
+        console.log(error)
+        res.status(500).send({error});
     });
 
     shell.end(err => {
