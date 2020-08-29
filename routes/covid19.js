@@ -18,7 +18,7 @@ const {
 const { 
   getTimeSeriesCountry
 } = require('../controllers/covid19/timeSeries');
-const mobility = require('../controllers/mobility')
+const mobility = require('./mobility');
 
 router.get("/totalByCountryStatus", getTotalByCountryAndStatus);
 router.get('/countries', getCountries);
@@ -32,10 +32,7 @@ router.get('/countryProvinceReport', getCountryProvinceData);
 router.get('/countryReport', getCountrySummary);
 
 //Mobility
-router.use('/mobility/:source', (req, res, next) => {
-  req.source = req.params.source;
-  next();
-}, mobility);
+router.use('/mobility', mobility);
 
 // Time Series 
 router.get('/timeSeries/country', getTimeSeriesCountry);

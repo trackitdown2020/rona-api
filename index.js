@@ -28,8 +28,6 @@ app.use("/covid19", covid19);
 app.use("/dataModels", dataModels);
 app.use('/country', country);
 
-app.use('/mobility', mobility);
-
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

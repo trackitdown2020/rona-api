@@ -9,8 +9,12 @@ const {
     getMobility
 } = require('../controllers/covid19/mobility')
 
-mobility.get('/', (req, res, next) => {
-    let source = req.source;
+mobility.use((req, res, next) => {
+    next();
+})
+
+mobility.get('/:source', (req, res, next) => {
+    const source = req.params.source;
     if(source === 'apple') {
         getAppleMobilityData(req, res);
     } else if(source === 'google') {
@@ -20,8 +24,22 @@ mobility.get('/', (req, res, next) => {
     }
 });
 
-mobility.get('/supportedCountries', getAppleMobilitySupportedCountries);
-mobility.get('/supportedSubregions', getAppleMobilitySupportedSubregions);
+mobility.get('/:source/supportedCountries', (req, res, next) => {
+    const source = req.params.source;
+    if(source === 'apple') {
+        getAppleMobilitySupportedCountries(req, res);
+    } else {
+        res.status(500).send({error: `${source} is not supported`});
+    }
+});
 
+mobility.get('/:source/supportedSubregions', (req, res, next) => {
+    const source = req.params.source;
+    if(source === 'apple') {
+        getAppleMobilitySupportedSubregions(req, res);
+    } else {
+        res.status(500).send({error: `${source} is not supported`});
+    }
+});
 
 module.exports = mobility;
