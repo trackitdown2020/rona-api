@@ -7,6 +7,11 @@ from json import JSONEncoder
 
 
 class NumpyArrayEncoder(JSONEncoder):
+    """
+    Numpy array to Json converter
+    json.dumps requires class instance for cls param
+    """
+
     def default(self, obj):
         if isinstance(obj, np.ndarray):
             return obj.tolist()
@@ -14,6 +19,20 @@ class NumpyArrayEncoder(JSONEncoder):
 
 
 def deriv(y, time, N, beta, gamma, delta):
+    """
+
+    differntial equations that define the SEIR model
+    reference: https://web.stanford.edu/~jhj1/teachingdocs/Jones-Epidemics050308.pdf slide 50
+
+    :param y: tuple of susceptible, exposed, infected, resistant values
+    :param time: time
+    :param N: total population
+    :param beta: rate of spread
+    :param gamma: rate of recovery
+    :param delta: rate of progression from exposure to infection
+    :return: returns tuple of derivatives for susceptible, exposed, infected, resistant
+
+    """
     susceptible, exposed, infected, resistant = y
     dSusceptible = -beta * susceptible * infected / N
     dExposed = beta * susceptible * infected / N - delta * exposed
@@ -23,9 +42,22 @@ def deriv(y, time, N, beta, gamma, delta):
 
 
 def integ(y_initial, time, N, beta, gamma, delta):
+    """
+
+    solves the system of SEIR differntial equations using scipy.integrate
+    :param y_initial: tuple of seed values for SEIR values
+    :param time: time
+    :param N: total population
+    :param beta: rate of spread
+    :param gamma: rate of recovery
+    :param delta: rate of progression from exposure to infectione
+    :return: returns tuple of time-series arrays for susceptible, exposed, infected, resistant 
+
+    """
     ret = odeint(deriv, y_initial, time, args=(N, beta, gamma, delta))
     susceptible, exposed, infected, resistant = ret.T
     return susceptible, exposed, infected, resistant
+
 
 def read_in():
     value = input()

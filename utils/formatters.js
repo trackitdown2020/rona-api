@@ -1,4 +1,5 @@
 const { upperCaseFirstLetter } = require('./string');
+const Moment = require('moment');
 
 const lineGraphFormatter = (data) => {
     return Object.entries(data).map(([key, value]) => {
@@ -17,5 +18,6 @@ const lineGraphFormatter = (data) => {
 }
 
 module.exports = {
-    lineGraphFormatter
+    lineGraphFormatter,
+    timeSeriesFormatter
 }
