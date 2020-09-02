@@ -21,6 +21,7 @@ const {
 const { 
   getTimeSeriesCountry
 } = require('../controllers/covid19/timeSeries');
+const vaccine = require('./vaccine');
 
 router.get("/totalByCountryStatus", getTotalByCountryAndStatus);
 router.get('/countries', getCountries);
@@ -35,6 +36,9 @@ router.get('/countryReport', getCountrySummary);
 
 //Mobility
 router.get('/mobility', getMobility);
+
+// Vaccine
+router.use('/vaccine', vaccine);
 
 // Time Series 
 router.get('/timeSeries/country', getTimeSeriesCountry);
