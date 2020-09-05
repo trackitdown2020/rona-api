@@ -31,6 +31,7 @@
     "moment": "^2.27.0",
     "morgan": "^1.10.0",
     "newsapi": "^2.4.0",
+    "node-cache": "^5.1.2",
     "nodemon": "^2.0.3",
     "odex": "^2.0.4",
     "python-shell": "^2.0.1",

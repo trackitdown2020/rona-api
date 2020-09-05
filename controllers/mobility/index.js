@@ -6,6 +6,7 @@ const {
 const {
     appleMobilityMapper
 } = require('../../mappers/appleMobilityMapper');
+const cache = require('../../utils/cache');
 
 const getAppleMobilityData = async (req, res) => {
     const qs = req.query;
@@ -20,7 +21,16 @@ const getAppleMobilityData = async (req, res) => {
 }
 
 const getAppleMobilitySupportedCountries = async (req, res) => {
-    const response = await getAllCountries();
+    const cachedValue = cache.get('apple.mobility.supported.countries');
+
+    let response;
+    if(cachedValue) {
+        response = cachedValue;
+    } else {
+        response = await getAllCountries();
+        cache.set('apple.mobility.supported.countries', response);
+    }
+
     if(response) {
         res.status(200).send(response);
     } else {
@@ -31,10 +41,21 @@ const getAppleMobilitySupportedCountries = async (req, res) => {
 const getAppleMobilitySupportedSubregions = async (req, res) => {
     const qs = req.query;
     const { country } = qs;
-    const response = await getAllCountrySubregion(country);
-    const { subregions } = response;
+
+    const cachedValue = cache.get(`apple.mobility.supportedRegions.${country}`);
+
+    let response;
+    if(cachedValue) {
+        response = cachedValue;
+    } else {
+        const queryResponse = await getAllCountrySubregion(country);
+        const { subregions } = queryResponse;
+        response = subregions;
+        cache.set(`apple.mobility.supportedRegions.${country}`, response);
+    }
+    
     if(response) {
-        res.status(200).send(subregions);
+        res.status(200).send(response);
     } else {
         res.status(500).send({error: `Issue getting subregions for ${country}`})
     }
