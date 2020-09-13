@@ -6,7 +6,7 @@ const getSearchList = async (req, res) => {
     const response = await querySearchList(qs);
     const { data, status } = response;
     if (status == 200 && data) {
-        let items = data.items;
+        const { items = [] } = data;
         const mappedSearch = items.map(items => youtubeMapper(items));
         console.log(mappedSearch);
         res.status(200).send(mappedSearch);

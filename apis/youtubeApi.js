@@ -10,7 +10,6 @@ Youtube.authenticate({
 let querySearchList = async (query) => {
     try {
         const response = await Youtube.search.list(query);
-        console.log(response);
         return response;
     } catch (error) {
         throw new Error(error);

@@ -4,6 +4,6 @@ const {
     getSearchList
 } = require('../controllers/youtube')
 
-router.get('/searchList', getSearchList)
+router.get('/search', getSearchList)
 
 module.exports = router
