@@ -8,7 +8,6 @@ const getSearchList = async (req, res) => {
     if (status == 200 && data) {
         const { items = [] } = data;
         const mappedSearch = items.map(items => youtubeMapper(items));
-        console.log(mappedSearch);
         res.status(200).send(mappedSearch);
     } else {
         console.log("error");
