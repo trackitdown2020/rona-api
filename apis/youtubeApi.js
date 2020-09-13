@@ -17,14 +17,6 @@ let querySearchList = async (query) => {
         return;
     }
 };
-// const query = {
-//     "part": [
-//         "snippet"
-//     ],
-//     "maxResults": 5,
-//     "q": "COVID-19 news"
-// };
-// querySearchList(query);
 
 module.exports = {
     querySearchList
