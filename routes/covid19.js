@@ -22,6 +22,7 @@ const {
   getTimeSeriesCountry
 } = require('../controllers/covid19/timeSeries');
 const therapeutics = require('./therapeutics');
+const vaccine = require('./vaccine');
 
 router.get("/totalByCountryStatus", getTotalByCountryAndStatus);
 router.get('/countries', getCountries);

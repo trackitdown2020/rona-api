@@ -1,4 +1,3 @@
-
 const therapeuticsTrialMapper = (therapeuticsData) => {
     const { data } = therapeuticsData;
     const phases = {
