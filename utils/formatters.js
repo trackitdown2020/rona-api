@@ -18,5 +18,5 @@ const lineGraphFormatter = (data) => {
 }
 
 module.exports = {
-    lineGraphFormatter
+    lineGraphFormatter,
 }
