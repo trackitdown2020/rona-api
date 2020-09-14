@@ -6,5 +6,6 @@ module.exports = {
   covid19: require('./covid19'),
   dataModels: require("./dataModels"),
   country: require('./country'),
-  geoJSON: require('./geojson')
+  geoJSON: require('./geojson'),
+  youtube: require('./youtube')
 }
