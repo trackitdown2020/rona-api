@@ -4,7 +4,7 @@ const Youtube = require("youtube-api");
 
 Youtube.authenticate({
     type: "key",
-    key: tokens.youtube.key
+    key: tokens && tokens.youtube && tokens.youtube.key
 });
 
 let querySearchList = async (query) => {

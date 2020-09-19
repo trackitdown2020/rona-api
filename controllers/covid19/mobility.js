@@ -1,4 +1,4 @@
-const { queryMobility, typeMap, nameMap, types } = require('../../apis/covid19/mobilityAPI');
+const { queryMobility, typeMap, nameMap, types } = require('../../apis/covid19/mobility/google');
 
 const processMobilityDataHelper = (locationData) => {
     return locationData.map(({ points, id }) => {
