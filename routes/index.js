@@ -5,5 +5,7 @@ module.exports = {
   reddit: require('./reddit'),
   covid19: require('./covid19'),
   dataModels: require("./dataModels"),
-  country: require('./country')
+  country: require('./country'),
+  geoJSON: require('./geojson'),
+  youtube: require('./youtube')
 }

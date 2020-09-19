@@ -9,7 +9,9 @@ const {
   reddit,
   covid19,
   dataModels,
-  country
+  country,
+  geoJSON,
+  youtube
 } = require('./routes');
 const { morganMiddleware } = require("./middleware/logging");
 
@@ -27,6 +29,9 @@ app.use("/reddit", reddit);
 app.use("/covid19", covid19);
 app.use("/dataModels", dataModels);
 app.use('/country', country);
+app.use("/youtube", youtube);
+
+app.use('/geojson', geoJSON);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
