@@ -9,22 +9,16 @@ const router = express.Router()
 //   getSummaryCountries,
 // } = require('../controllers/covid19/coronavirus');
 const {
-  getMobility
-} = require('../controllers/covid19/mobility')
-// const {
-//   getTotalByCountryAndStatus,
-// } = require("../controllers/covid");
-// const {
-//   getCountryProvinceData,
-//   getCountrySummary
-// } = require('../controllers/covid19/province');
-// const { 
-//   getTimeSeriesCountry
-// } = require('../controllers/covid19/timeSeries');
-
-// router.get("/totalByCountryStatus", getTotalByCountryAndStatus);
-// router.get('/countries', getCountries);
-// router.get('/country/:country', getCountry);
+  getTotalByCountryAndStatus,
+} = require("../controllers/covid");
+const {
+  getCountryProvinceData,
+  getCountrySummary
+} = require('../controllers/covid19/province');
+const { 
+  getTimeSeriesCountry
+} = require('../controllers/covid19/timeSeries');
+const mobility = require('./mobility');
 
 // router.get('/summary', getSummary);
 // router.get('/globalSummary', getSummaryGlobal);
@@ -36,7 +30,7 @@ const {
 router.use('/summary')
 
 //Mobility
-router.get('/mobility', getMobility);
+router.use('/mobility', mobility);
 
 // Time Series 
 router.use('/timeSeries')
