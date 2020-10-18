@@ -41,7 +41,6 @@ const getCountryHistorical = async (req, res) => {
  
 const getCountryProvinceHistorical = async (req, res) => {
     const { country='', provinces='' } = req.params;
-    console.log(country, provinces)
     const {  lastdays } = req.query;
 
     if(!country) {
@@ -81,7 +80,6 @@ const getUSHistorical = async (req, res) => {
             error: 'Could not query US specific data'
         })
     }
-
 }
 
 const getUSStateHistorical = async (req, res) => {
