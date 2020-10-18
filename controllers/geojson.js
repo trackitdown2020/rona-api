@@ -1,5 +1,4 @@
 const axios = require('axios');
-const nodemon = require('nodemon');
 
 const getCountryGeoJSON = async (req, res) => {
     const { country } = req.params;
