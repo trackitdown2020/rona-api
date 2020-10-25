@@ -15,6 +15,10 @@ const {
 } = require('./routes');
 const { morganMiddleware } = require("./middleware/logging");
 
+if(process.env.DEBUG === 'axios') {
+  console.log('you are in axios debugging mode')
+}
+
 const app = express();
 app.use(cors());
 const port = 8080;
