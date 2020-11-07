@@ -1,6 +1,12 @@
 const snoowrap = require('snoowrap');
 const _ = require('lodash');
-const { reddit:redditTokens } = require('../config/tokens');
+
+const redditTokens = {
+    userAgent: process.env.REDDIT_USER_AGENT,
+    clientId: process.env.REDDIT_CLIENT_ID,
+    clientSecret: process.env.REDDIT_CLIENT_SECRET,
+    refreshToken: process.env.REDDIT_REFRESH_TOKEN
+}
 const reddit = new snoowrap(redditTokens);
 const { subredditPostMapper } = require('../mappers/redditMapper');
 
