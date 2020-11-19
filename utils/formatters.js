@@ -14,7 +14,6 @@ const lineGraphFormatter = (data) => {
             data: mappedValues
         }
     })
-
 }
 
 module.exports = {
