@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
+    "dev": "DEBUG=axios nodemon index.js",
     "python:install": "source scripts/python:install.sh"
   },
   "repository": {
@@ -20,23 +21,27 @@
   "homepage": "https://github.com/jchen006/rona-api#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "axios-debug-log": "^0.8.0",
     "body-parser": "^1.19.0",
     "chalk": "^4.0.0",
     "cors": "^2.8.5",
     "db-country": "^1.0.1",
     "express": "^4.17.1",
+    "google-auth-library": "^6.0.6",
+    "googleapis": "^59.0.0",
     "http": "0.0.1-security",
     "iso-3166-1": "^1.1.0",
     "lodash": "^4.17.15",
     "moment": "^2.27.0",
     "morgan": "^1.10.0",
     "newsapi": "^2.4.0",
+    "node-cache": "^5.1.2",
     "nodemon": "^2.0.3",
-    "odex": "^2.0.4",
     "python-shell": "^2.0.1",
     "request": "^2.88.2",
     "snoowrap": "^1.21.0",
     "twitter": "^1.7.1",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "youtube-api": "^3.0.1"
   }
 }

@@ -1,42 +1,20 @@
-const express = require('express')
-const router = express.Router()
-const { 
-  getCountry,
-  getCountries,
-  getSummary,
-  getSummaryOfAllCountries,
-  getSummaryGlobal,
-  getSummaryCountries,
-} = require('../controllers/covid19/coronavirus');
-const {
-  getMobility
-} = require('../controllers/covid19/mobility')
-const {
-  getTotalByCountryAndStatus,
-} = require("../controllers/covid");
-const {
-  getCountryProvinceData,
-  getCountrySummary
-} = require('../controllers/covid19/province');
-const { 
-  getTimeSeriesCountry
-} = require('../controllers/covid19/timeSeries');
+
+const mobility = require('./mobility');
+const summary = require('./covid19Summary');
+const historical = require('./covid19Historical');
 const therapeutics = require('./therapeutics');
 const vaccine = require('./vaccine');
+const express = require('express');
+const router = express.Router();
 
-router.get("/totalByCountryStatus", getTotalByCountryAndStatus);
-router.get('/countries', getCountries);
-router.get('/country/:country', getCountry);
-
-router.get('/summary', getSummary);
-router.get('/globalSummary', getSummaryGlobal);
-router.get('/countriesSummary', getSummaryCountries);
-router.get('/summaryOfAllCountries', getSummaryOfAllCountries);
-router.get('/countryProvinceReport', getCountryProvinceData);
-router.get('/countryReport', getCountrySummary);
+// Summary
+router.use('/summary', summary);
 
 //Mobility
-router.get('/mobility', getMobility);
+router.use('/mobility', mobility);
+
+//Historical
+router.use('/historical', historical);
 
 // Therapeutics
 router.use('/therapeutics', therapeutics);
@@ -45,6 +23,7 @@ router.use('/therapeutics', therapeutics);
 router.use('/vaccine', vaccine);
 
 // Time Series 
-router.get('/timeSeries/country', getTimeSeriesCountry);
+// router.use('/timeSeries')
+// router.get('/timeSeries/country', getTimeSeriesCountry);
 
 module.exports = router
