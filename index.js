@@ -31,7 +31,6 @@ app.use("/google", google);
 app.use("/twitter", twitter);
 app.use("/reddit", reddit);
 app.use("/covid19", covid19);
-app.use("/dataModels", dataModels);
 app.use('/country', country);
 app.use("/youtube", youtube);
 
