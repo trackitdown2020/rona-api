@@ -41,7 +41,7 @@ const getCountryHistorical = async (req, res) => {
  
 const getCountryProvinceHistorical = async (req, res) => {
     const { country='', provinces='' } = req.params;
-    const {  lastdays } = req.query;
+    const { lastdays } = req.query;
 
     if(!country) {
         res.status(500).send({
