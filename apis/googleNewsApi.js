@@ -1,7 +1,9 @@
 const request = require("request");
-const tokens = require("../config/tokens");
 const NewsAPI = require("newsapi");
-const newsapi = new NewsAPI(tokens.google.key);
+
+const apiKey = process.env.GOOGLE_KEY;
+
+const newsapi = new NewsAPI(apiKey);
 
 let queryTopHeadlines = async (qs) => {
   try {
