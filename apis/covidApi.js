@@ -15,7 +15,7 @@ const queryTotalByCountryAndStatus = async (country, status) => {
     return { infected };
   } catch (error) {
     throw new Error(error);
-    return;
+    return { error };
   }
 };
 
