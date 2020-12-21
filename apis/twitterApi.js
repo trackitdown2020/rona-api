@@ -30,7 +30,7 @@ const getLanguages = async () => {
         return response;
     } catch(error) {
         throw new Error(error);
-        return;
+        return { error };
     }
 }
 
@@ -45,7 +45,7 @@ const getPopularTweetsByQuery = async (query, lang, result_type) => {
         return response;
     } catch(error) {
         throw new Error(error);
-        return;
+        return { error }
     }
 }
 

@@ -1,10 +1,9 @@
-const tokens = require('../config/tokens');
 const request = require('request');
 const Youtube = require("youtube-api");
 
 Youtube.authenticate({
     type: "key",
-    key: tokens && tokens.youtube && tokens.youtube.key
+    key: process.env.YOUTUBE_API_KEY
 });
 
 let querySearchList = async (query) => {
@@ -13,7 +12,7 @@ let querySearchList = async (query) => {
         return response;
     } catch (error) {
         throw new Error(error);
-        return;
+        return { error }; 
     }
 };
 

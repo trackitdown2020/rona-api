@@ -11,7 +11,7 @@ let queryTopHeadlines = async (qs) => {
     return response;
   } catch (error) {
     throw new Error(error);
-    return;
+    return { error };
   }
 };
 
@@ -21,7 +21,7 @@ let queryAllSources = async (qs) => {
     return response;
   } catch (error) {
     throw new Error(error);
-    return;
+    return { error };
   }
 };
 
@@ -31,7 +31,7 @@ let queryEverythingBySubject = async (qs) => {
     return response;
   } catch (error) {
     throw new Error(error);
-    return;
+    return { error };
   }
 };
 

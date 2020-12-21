@@ -9,7 +9,6 @@ const {
   twitter,
   reddit,
   covid19,
-  dataModels,
   country,
   geoJSON,
   youtube
