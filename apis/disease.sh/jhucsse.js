@@ -6,7 +6,6 @@ const COUNTRY = `/v3/covid-19/historical/`;
 const USA_COUNTY = `/v3/covid-19/historical/usacounties`;
 
 const queryWorldHistorical = async (lastdays="all") => {
-    console.log(lastdays)
     try {
         const response = await axios.get(`${BASE_URL}${WORLD_ALL}`, {
             params: {
