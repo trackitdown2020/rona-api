@@ -4,6 +4,7 @@ const summary = require('./covid19Summary');
 const historical = require('./covid19Historical');
 const therapeutics = require('./therapeutics');
 const vaccine = require('./vaccine');
+const testing = require('./testing');
 const express = require('express');
 const router = express.Router();
 
@@ -21,6 +22,9 @@ router.use('/therapeutics', therapeutics);
 
 // Vaccine 
 router.use('/vaccine', vaccine);
+
+// Testing 
+router.use('/testing', testing);
 
 // Time Series 
 // router.use('/timeSeries')
