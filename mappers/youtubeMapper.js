@@ -1,6 +1,6 @@
 const youtubeMapper = ({
     id: {
-        videoid
+        videoId
     },
     snippet: {
         publishedAt,
@@ -13,7 +13,7 @@ const youtubeMapper = ({
 }) => {
     return ({
         id: {
-            videoid
+            videoId
         },
         snippet: {
             publishedAt,
